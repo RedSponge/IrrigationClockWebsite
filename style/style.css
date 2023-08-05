@@ -1,0 +1,31 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: antiquewhite;
+}
+
+.plan-entry-container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.plan-entry-name {
+    flex-grow: 1;
+}
+
+.plan-entry-valve {
+    flex-grow: 1;
+}
+
+.plan-board {
+    width: 100%;
+}
+
+.day-selector-container {
+    display: flex;
+}
+
+.day-selector-day {
+    margin-left: 5px;
+    margin-right: 5px;
+}
