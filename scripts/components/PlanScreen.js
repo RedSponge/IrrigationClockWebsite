@@ -90,11 +90,14 @@ export const PlanScreen = {
         }
       }
       const db = getDatabase();
-      const planRef = ref(
-        db,
-        `/Users/${this.currentUser.uid}/Plans/${planName}`
-      );
-      set(planRef, Plan.default(planName).toFirebase());
+      const planRef = ref(db, `/Users/${this.currentUser.uid}/Plans`);
+      const newPlans = {};
+      for (let plan of this.plans) {
+        newPlans[plan.name] = plan.toFirebase();
+      }
+      newPlans[planName] = Plan.default(planName).toFirebase();
+
+      set(planRef, newPlans);
     },
   },
   data() {
