@@ -33,7 +33,7 @@ export const PlanEntry = {
   methods: {
     startChanged(event) {
       this.plan.startTime = inputTimeToSeconds(this.$refs.startTime.value);
-      this.publishUpdate("startTime");
+      this.publishUpdate("start_time");
       if (this.capDuration()) {
         this.publishUpdate("duration");
       }
@@ -94,8 +94,8 @@ export const PlanEntry = {
         <div class="plan-entry-valve">
             Valve: 
             <select @input="valveChanged" :value="plan.valve">
-                <option value="1">1</option>
-                <option value="2">2</option>
+                <option value="0">1</option>
+                <option value="1">2</option>
             </select>
         </div>
         <div>
