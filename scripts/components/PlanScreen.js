@@ -60,14 +60,14 @@ export const PlanScreen = {
         );
       }
     },
-    updateFirebase(plan) {
+    updateFirebase(plan, field) {
       const db = getDatabase();
       const planRef = ref(
         db,
-        `/Users/${this.currentUser.uid}/Plans/${plan.name}`
+        `/Users/${this.currentUser.uid}/Plans/${plan.name}/${field}`
       );
       const toFB = plan.toFirebase();
-      set(planRef, toFB);
+      set(planRef, toFB[field]);
     },
     logout() {
       const auth = getAuth();
@@ -108,7 +108,7 @@ export const PlanScreen = {
     <h1> Plans </h1>
     <table class="plan-board">
         <tr v-for="plan of plans" :key="plan.name">
-            <plan-entry @deleted="deletePlan(plan)" @changed="updateFirebase(plan)" :plan="plan"/>
+            <plan-entry @deleted="deletePlan(plan)" @changed="(event) => updateFirebase(plan, event.field)" :plan="plan"/>
         </tr>
     </table>
     <button @click="addPlan">Add Plan</button>

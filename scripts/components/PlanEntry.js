@@ -33,8 +33,10 @@ export const PlanEntry = {
   methods: {
     startChanged(event) {
       this.plan.startTime = inputTimeToSeconds(this.$refs.startTime.value);
-      this.capDuration();
-      this.publishUpdate();
+      this.publishUpdate("startTime");
+      if (this.capDuration()) {
+        this.publishUpdate("duration");
+      }
     },
     endChanged(event) {
       let newEnd = inputTimeToSeconds(this.$refs.endTime.value);
@@ -44,28 +46,30 @@ export const PlanEntry = {
         this.$refs.endTime.value = secondsToInputTime(newEnd);
       }
       this.plan.duration = newEnd - this.plan.startTime;
-      this.publishUpdate();
+      this.publishUpdate("duration");
     },
     capDuration() {
       if (this.plan.startTime + this.plan.duration > MAX_TIME) {
         // Cap to maximum time the plan can take.
         this.plan.duration = MAX_TIME - this.plan.startTime;
+        return true;
       }
+      return false;
     },
     daysChanged(days) {
       this.plan.days = days;
-      this.publishUpdate();
+      this.publishUpdate("days");
     },
     valveChanged(event) {
       this.plan.valve = parseInt(event.target.value);
-      this.publishUpdate();
+      this.publishUpdate("valve");
     },
-    publishUpdate() {
-      this.$emit("changed");
+    publishUpdate(field) {
+      this.$emit("changed", { field: field });
     },
     isEnabledChanged(event) {
       this.plan.isEnabled = event.target.checked;
-      this.publishUpdate();
+      this.publishUpdate("is_enabled");
     },
     deletePlan() {
       if (confirm(`Are you sure you wish to delete ${this.plan.name}`)) {
