@@ -29,3 +29,10 @@ body {
     margin-left: 5px;
     margin-right: 5px;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    margin: auto 0;
+}
