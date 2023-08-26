@@ -3,15 +3,14 @@ import { Plan } from "../data/Plan.js";
 const secondsToInputTime = (seconds) => {
   const hour = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds - hour * 3600) / 60);
-  const minuteSeconds = seconds - (hour * 60 + minutes) * 60;
   return `${hour.toString().padStart(2, "0")}:${minutes
     .toString()
-    .padStart(2, "0")}:${minuteSeconds.toString().padStart(2, "0")}`;
+    .padStart(2, "0")}`;
 };
 
 const inputTimeToSeconds = (input) => {
-  const [hour, minute, second] = input.split(":");
-  return (parseInt(hour) * 60 + parseInt(minute)) * 60 + parseInt(second);
+  const [hour, minute] = input.split(":");
+  return (parseInt(hour) * 60 + parseInt(minute)) * 60;
 };
 
 // Max seconds a plan is allowed to span: 24 hours - 1 second.
