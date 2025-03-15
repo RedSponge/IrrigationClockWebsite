@@ -15,31 +15,18 @@ const firebaseConfig = {
 };
 
 const fbApp = initializeApp(firebaseConfig);
-// const fbAuth = getAuth(fbApp);
-// const fbDb = getDatabase(fbApp);
-
-// signInWithEmailAndPassword(fbAuth, "test@test.test", "testtesttest")
-//   .then((userCredential) => {
-//     const user = userCredential.user;
-//     const planRef = ref(fbDb, `Users/${user.uid}/Plans`);
-//     console.log(planRef);
-//     get(planRef).then((snapshot) => {
-//       const data = snapshot.val();
-//       console.log(data);
-//     });
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
 
 import { LoginScreen } from "./components/LoginScreen.js";
 import { PlanScreen } from "./components/PlanScreen.js";
 import { PlanEntry } from "./components/PlanEntry.js";
 import { DaySelector } from "./components/DaySelector.js";
+import { LogScreen } from "./components/LogScreen.js";
+import { Nav } from './components/Nav.js'
 
 const routes = [
   { path: "/", component: LoginScreen },
   { path: "/plans", component: PlanScreen },
+  { path: "/logs", component: LogScreen },
 ];
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
@@ -55,5 +42,6 @@ const app = createApp({
 });
 app.component("plan-entry", PlanEntry);
 app.component("day-selector", DaySelector);
+app.component("mynav", Nav);
 app.use(router);
 app.mount("#app");

@@ -81,25 +81,35 @@ export const PlanEntry = {
   },
   template: `
     <div class="plan-entry-container">
-        <div class="plan-entry-enabled">
-            <input type="checkbox" @input="isEnabledChanged" :checked="plan.isEnabled"/>
+      <div class="plan-entry-top">
+        <div style="display: flex">
+          <div class="plan-entry-enabled">
+              <input type="checkbox" @input="isEnabledChanged" :checked="plan.isEnabled"/>
+          </div>
+          <div class="plan-entry-name">{{plan.name}}</div>
         </div>
-        <div class="plan-entry-name">{{plan.name}}</div>
-        <div class="plan-entry-time">
-            From <input @input="startChanged" ref="startTime" type="time" class="plan-entry-start-time" :value="startTimeString"/>
-            to <input @input="endChanged" ref="endTime" type="time" class="plan-entry-end-time" :value="endTimeString"/>
+        <div style="display: flex;">
+          <div class="plan-entry-valve">
+              Valve: 
+              <select @input="valveChanged" :value="plan.valve">
+                  <option value="0">1</option>
+                  <option value="1">2</option>
+              </select>
+          </div>
         </div>
-        <day-selector @input="daysChanged" :days="this.plan.days"/>
-        <div class="plan-entry-valve">
-            Valve: 
-            <select @input="valveChanged" :value="plan.valve">
-                <option value="0">1</option>
-                <option value="1">2</option>
-            </select>
+        <div style="display: flex;">
+          <div class="plan-entry-time">
+              <input @input="startChanged" ref="startTime" type="time" class="plan-entry-start-time" :value="startTimeString"/>
+              - <input @input="endChanged" ref="endTime" type="time" class="plan-entry-end-time" :value="endTimeString"/>
+          </div>
         </div>
-        <div>
+      </div>
+      <div class="plan-entry-bottom">
+        <div class="plan-entry-delete">
             <button @click="deletePlan">Delete</button>
         </div>
+        <day-selector @input="daysChanged" :days="this.plan.days"/>
+      </div>
     </div>
     `,
 };

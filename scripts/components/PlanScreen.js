@@ -18,8 +18,6 @@ import { Plan } from "../data/Plan.js";
 
 export const PlanScreen = {
   setup(props, context) {
-    // this.ref = ref();
-    // this.loadPlans();
   },
   mounted() {
     const auth = getAuth();
@@ -108,6 +106,7 @@ export const PlanScreen = {
   },
   template: `
     <div>    
+    <mynav></mynav>
     <h1> Plans </h1>
     <table class="plan-board">
         <tr v-for="plan of plans" :key="plan.name">

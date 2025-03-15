@@ -7,14 +7,42 @@ body {
     display: flex;
     text-align: center;
     align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    gap: 10px;
+    max-width: 400px;
 }
 
 .plan-entry-name {
     flex-grow: 1;
+    font-weight: bold;
+}
+
+th {
+    text-align: left;
 }
 
 .plan-entry-valve {
+
     flex-grow: 1;
+}
+
+.plan-entry-delete {
+    display: flex;
+    align-items: flex-end;
+}
+
+.plan-entry-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.plan-entry-bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px;
 }
 
 .plan-board {
@@ -30,9 +58,52 @@ body {
     margin-right: 5px;
 }
 
+.log-container {
+    background: white;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: auto;
+    min-width: 80%;
+}
+
+.log-line {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    border: 1px solid black;
+}
+
+
+
+.log-timestamp {
+    width: 190px;
+    padding: 5px;
+    color: grey;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
 footer {
     position: fixed;
     bottom: 0;
     text-align: center;
     margin: auto 0;
+}
+
+navbar a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: grey;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 5px;
+}
+
+navbar a:hover {
+    background-color: #aaa;
+}
+
+navbar {
+    display: flex;
+    align-items: flex-start;
 }
